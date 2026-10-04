@@ -1,57 +1,117 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#0f766e">
-  <meta name="description" content="Productivity Hub - Aplikasi produktivitas mobile serba ada untuk mengelola Tugas, Fokus Timer Pomodoro, dan Jurnal Refleksi Harian.">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description"
+    content="Productivity Hub - Aplikasi produktivitas mobile serba ada untuk mengelola Tugas, Fokus Timer Pomodoro, dan Jurnal Refleksi Harian.">
   <title>Productivity Hub</title>
+  <!-- Pasang konfigurasi PWA di dalam tag <head> index.html -->
+  <link rel="manifest"
+    href="data:application/manifest+json;utf-8,%7B%22name%22%3A%22Productivity%20Hub%22%2C%22short_name%22%3A%22ProdHub%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23f8fafc%22%2C%22theme_color%22%3A%22%230f766e%22%7D">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ProductivityHub">
 
   <!-- Google Font: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
   <style>
     /* =========================================
-       CSS VARIABLES & THEME TOKENS
+       CSS VARIABLES & THEME TOKENS: PASTEL & WHITE BASE
        ========================================= */
     :root {
-      --primary: #0f766e;        /* Hijau Toska Tua */
-      --primary-hover: #115e59;
-      --primary-light: #ccfbf1;  /* Soft Teal Background */
-      --primary-subtle: #f0fdfa; /* Ultra Light Teal */
-      --accent: #14b8a6;         /* Hijau Toska Cerah */
-      --accent-glow: rgba(20, 184, 166, 0.35);
-      
+      /* Base Backgrounds: Pure Crisp White */
+      --body-bg: #ffffff;
       --card-bg: #ffffff;
-      --body-bg: #f8fafc;
-      --outer-bg: #f1f5f9;
-      
-      --text-main: #0f172a;
+      --outer-bg: #f8fafc;
+
+      /* Curated Pastel Color Palette */
+      --pastel-blue: #60a5fa;
+      /* Soft Blue */
+      --pastel-blue-hover: #3b82f6;
+      --pastel-blue-light: #eff6ff;
+      --pastel-blue-subtle: #f0f9ff;
+      --pastel-blue-border: #bfdbfe;
+      --pastel-blue-text: #1d4ed8;
+
+      --pastel-pink: #f472b6;
+      /* Soft Pink */
+      --pastel-pink-hover: #ec4899;
+      --pastel-pink-light: #fdf2f8;
+      --pastel-pink-border: #fbcfe8;
+      --pastel-pink-text: #be185d;
+
+      --pastel-yellow: #fde047;
+      /* Butter Yellow */
+      --pastel-yellow-hover: #facc15;
+      --pastel-yellow-light: #fefce8;
+      --pastel-yellow-border: #fef08a;
+      --pastel-yellow-text: #a16207;
+
+      --pastel-mint: #6ee7b7;
+      /* Soft Mint / Sage */
+      --pastel-mint-light: #ecfdf5;
+      --pastel-mint-border: #a7f3d0;
+      --pastel-mint-text: #047857;
+
+      --pastel-purple: #c084fc;
+      /* Soft Lilac / Lavender */
+      --pastel-purple-light: #faf5ff;
+      --pastel-purple-border: #e9d5ff;
+      --pastel-purple-text: #7e22ce;
+
+      --pastel-peach: #fdba74;
+      /* Soft Peach */
+      --pastel-peach-light: #fff7ed;
+      --pastel-peach-border: #fed7aa;
+      --pastel-peach-text: #c2410c;
+
+      /* Semantic Primary & Accent Mapping */
+      --primary: #60a5fa;
+      /* Soft Sky Blue */
+      --primary-hover: #3b82f6;
+      --primary-light: #eff6ff;
+      /* Soft Blue Tint */
+      --primary-subtle: #f8fafc;
+      --accent: #f472b6;
+      /* Soft Pink */
+      --accent-glow: rgba(244, 114, 182, 0.3);
+
+      --text-main: #1e293b;
       --text-muted: #64748b;
       --text-light: #94a3b8;
-      
-      --border-color: #e2e8f0;
-      --border-subtle: #f1f5f9;
-      
-      --danger: #ef4444;
-      --danger-light: #fee2e2;
-      --warning: #f59e0b;
-      --warning-light: #fef3c7;
-      --success: #10b981;
-      --success-light: #d1fae5;
-      
-      --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
-      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
-      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.03);
-      --shadow-teal: 0 8px 20px -4px rgba(15, 118, 110, 0.28);
-      
+
+      --border-color: #f1f5f9;
+      --border-subtle: #f8fafc;
+
+      --danger: #fb7185;
+      /* Soft Pink Red */
+      --danger-light: #fff1f2;
+      --warning: #facc15;
+      /* Butter Yellow */
+      --warning-light: #fefce8;
+      --success: #34d399;
+      /* Soft Mint */
+      --success-light: #ecfdf5;
+
+      --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.02);
+      --shadow-md: 0 4px 10px -1px rgba(96, 165, 250, 0.09), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+      --shadow-lg: 0 12px 24px -4px rgba(96, 165, 250, 0.12), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
+      --shadow-teal: 0 8px 20px -4px rgba(96, 165, 250, 0.28);
+      --shadow-pastel: 0 8px 20px -4px rgba(96, 165, 250, 0.25);
+      --shadow-pink: 0 8px 20px -4px rgba(244, 114, 182, 0.25);
+
       --radius-sm: 10px;
       --radius-md: 14px;
       --radius-lg: 20px;
       --radius-full: 9999px;
-      
+
       --nav-height: 68px;
       --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
@@ -119,11 +179,13 @@
       user-select: none;
       z-index: 10;
     }
+
     .status-bar-icons {
       display: flex;
       gap: 6px;
       align-items: center;
     }
+
     .status-bar-icons svg {
       width: 14px;
       height: 14px;
@@ -135,34 +197,39 @@
        ========================================= */
     .app-header {
       padding: 8px 20px 16px;
-      background: linear-gradient(180deg, var(--body-bg) 0%, rgba(248, 250, 252, 0.95) 100%);
+      background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.95) 100%);
       position: sticky;
       top: 0;
       z-index: 20;
       backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
     }
+
     .header-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 8px;
     }
+
     .brand {
       display: flex;
       align-items: center;
       gap: 10px;
     }
+
     .brand-icon {
       width: 38px;
       height: 38px;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--pastel-pink) 100%);
       border-radius: var(--radius-sm);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #ffffff;
-      box-shadow: var(--shadow-teal);
+      box-shadow: var(--shadow-pastel);
     }
+
     .brand-title {
       font-size: 18px;
       font-weight: 800;
@@ -172,29 +239,34 @@
       align-items: center;
       gap: 6px;
     }
+
     .brand-badge {
       font-size: 10px;
       font-weight: 700;
-      background: var(--primary-light);
-      color: var(--primary);
-      padding: 2px 7px;
+      background: var(--pastel-yellow-light);
+      color: var(--pastel-yellow-text);
+      border: 1px solid var(--pastel-yellow-border);
+      padding: 2px 8px;
       border-radius: var(--radius-full);
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
+
     .date-display {
       font-size: 12px;
       font-weight: 500;
       color: var(--text-muted);
     }
+
     .quick-stats-strip {
       display: flex;
       gap: 8px;
       margin-top: 10px;
     }
+
     .stat-pill {
       flex: 1;
-      background: var(--card-bg);
+      background: #ffffff;
       border: 1px solid var(--border-color);
       padding: 8px 10px;
       border-radius: var(--radius-md);
@@ -203,28 +275,45 @@
       gap: 8px;
       box-shadow: var(--shadow-sm);
     }
+
     .stat-pill-icon {
       width: 28px;
       height: 28px;
       border-radius: 8px;
-      background: var(--primary-subtle);
-      color: var(--primary);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 13px;
       font-weight: 700;
     }
+
+    .stat-pill:nth-child(1) .stat-pill-icon {
+      background: var(--pastel-mint-light);
+      color: var(--pastel-mint-text);
+    }
+
+    .stat-pill:nth-child(2) .stat-pill-icon {
+      background: var(--pastel-blue-light);
+      color: var(--pastel-blue-text);
+    }
+
+    .stat-pill:nth-child(3) .stat-pill-icon {
+      background: var(--pastel-yellow-light);
+      color: var(--pastel-yellow-text);
+    }
+
     .stat-pill-info {
       display: flex;
       flex-direction: column;
     }
+
     .stat-pill-value {
       font-size: 13px;
       font-weight: 700;
       color: var(--text-main);
       line-height: 1.2;
     }
+
     .stat-pill-label {
       font-size: 10px;
       color: var(--text-muted);
@@ -236,7 +325,7 @@
        ========================================= */
     .app-main {
       flex: 1;
-      padding: 4px 18px calc(var(--nav-height) + 24px);
+      padding: 6px 18px calc(var(--nav-height) + 24px);
       overflow-y: auto;
       scroll-behavior: smooth;
     }
@@ -248,15 +337,16 @@
       transform: translateY(6px);
       transition: opacity 0.22s ease-out, transform 0.22s ease-out;
     }
+
     .tab-page.active {
       display: block;
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* Clean Card Component */
+    /* Clean Card Component (Base White) */
     .card {
-      background: var(--card-bg);
+      background: #ffffff;
       border-radius: var(--radius-lg);
       padding: 18px;
       margin-bottom: 16px;
@@ -264,12 +354,14 @@
       box-shadow: var(--shadow-sm);
       transition: box-shadow 0.2s ease, transform 0.2s ease;
     }
+
     .card-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 14px;
     }
+
     .card-title {
       font-size: 15px;
       font-weight: 700;
@@ -283,18 +375,20 @@
        TAB 1: TUGAS (TASK MANAGER)
        ========================================= */
     .task-input-wrapper {
-      background: var(--card-bg);
+      background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
       padding: 14px;
       margin-bottom: 16px;
       box-shadow: var(--shadow-sm);
     }
+
     .task-input-main {
       display: flex;
       gap: 8px;
       align-items: center;
     }
+
     .task-input {
       flex: 1;
       border: none;
@@ -304,28 +398,32 @@
       color: var(--text-main);
       background: transparent;
     }
+
     .task-input::placeholder {
       color: var(--text-light);
     }
+
     .btn-add-task {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      background: linear-gradient(135deg, var(--pastel-blue) 0%, #3b82f6 100%);
       color: #ffffff;
       border: none;
       border-radius: var(--radius-md);
-      padding: 8px 14px;
+      padding: 8px 15px;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
       font-family: inherit;
       display: flex;
       align-items: center;
       gap: 6px;
       cursor: pointer;
-      box-shadow: var(--shadow-teal);
+      box-shadow: var(--shadow-blue);
       transition: transform 0.15s ease, opacity 0.15s ease;
     }
+
     .btn-add-task:active {
       transform: scale(0.96);
     }
+
     .task-options-row {
       display: flex;
       justify-content: space-between;
@@ -334,18 +432,20 @@
       padding-top: 10px;
       border-top: 1px dashed var(--border-color);
     }
+
     .priority-selector {
       display: flex;
       gap: 8px;
       align-items: center;
     }
+
     .priority-pill {
       font-size: 11px;
       font-weight: 700;
       padding: 5px 12px;
       border-radius: var(--radius-full);
       border: 1.5px solid var(--border-color);
-      background: var(--body-bg);
+      background: #ffffff;
       color: var(--text-muted);
       cursor: pointer;
       transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -355,62 +455,74 @@
       gap: 5px;
       font-family: inherit;
     }
+
     .priority-dot {
       width: 7px;
       height: 7px;
       border-radius: 50%;
       display: inline-block;
     }
+
     .priority-pill:hover {
       transform: translateY(-1px);
     }
+
     .priority-pill:active {
       transform: scale(0.95);
     }
-    /* Tinggi: Merah #ef4444 */
+
+    /* Tinggi: Soft Pink */
     .priority-pill[data-priority="high"] {
-      border-color: #fca5a5;
-      color: #ef4444;
-      background: #fef2f2;
+      border-color: var(--pastel-pink-border);
+      color: var(--pastel-pink-text);
+      background: var(--pastel-pink-light);
     }
+
     .priority-pill[data-priority="high"].active {
-      background: #ef4444;
+      background: var(--pastel-pink);
       color: #ffffff;
-      border-color: #ef4444;
-      box-shadow: 0 4px 10px rgba(239, 68, 68, 0.35);
+      border-color: var(--pastel-pink);
+      box-shadow: 0 4px 10px rgba(244, 114, 182, 0.35);
     }
+
     .priority-pill[data-priority="high"].active .priority-dot {
       background: #ffffff !important;
     }
-    /* Sedang: Kuning #f59e0b */
+
+    /* Sedang: Butter Yellow */
     .priority-pill[data-priority="medium"] {
-      border-color: #fde68a;
-      color: #d97706;
-      background: #fffbeb;
+      border-color: var(--pastel-yellow-border);
+      color: var(--pastel-yellow-text);
+      background: var(--pastel-yellow-light);
     }
+
     .priority-pill[data-priority="medium"].active {
-      background: #f59e0b;
-      color: #ffffff;
-      border-color: #f59e0b;
-      box-shadow: 0 4px 10px rgba(245, 158, 11, 0.35);
+      background: var(--pastel-yellow);
+      color: #713f12;
+      border-color: var(--pastel-yellow-hover);
+      box-shadow: 0 4px 10px rgba(250, 204, 21, 0.35);
     }
+
     .priority-pill[data-priority="medium"].active .priority-dot {
-      background: #ffffff !important;
+      background: #713f12 !important;
     }
-    /* Rendah: Hijau #10b981 */
+
+    /* Rendah: Soft Mint */
     .priority-pill[data-priority="low"] {
-      border-color: #a7f3d0;
-      color: #059669;
-      background: #ecfdf5;
+      border-color: var(--pastel-mint-border);
+      color: var(--pastel-mint-text);
+      background: var(--pastel-mint-light);
     }
+
     .priority-pill[data-priority="low"].active {
-      background: #10b981;
-      color: #ffffff;
-      border-color: #10b981;
-      box-shadow: 0 4px 10px rgba(16, 185, 129, 0.35);
+      background: var(--pastel-mint);
+      color: #064e3b;
+      border-color: var(--pastel-mint);
+      box-shadow: 0 4px 10px rgba(110, 231, 183, 0.35);
     }
+
     .priority-pill[data-priority="low"].active .priority-dot {
-      background: #ffffff !important;
+      background: #064e3b !important;
     }
 
     /* Filter Chips (Semua, Aktif, Selesai) */
@@ -422,16 +534,18 @@
       margin-bottom: 12px;
       scrollbar-width: none;
     }
+
     .filter-scroll::-webkit-scrollbar {
       display: none;
     }
+
     .chip {
       flex: 1;
       padding: 7px 12px;
       border-radius: var(--radius-full);
       font-size: 12px;
       font-weight: 700;
-      background: var(--card-bg);
+      background: #ffffff;
       border: 1px solid var(--border-color);
       color: var(--text-muted);
       cursor: pointer;
@@ -440,11 +554,12 @@
       transition: all 0.18s ease;
       font-family: inherit;
     }
+
     .chip.active {
-      background: var(--primary);
+      background: var(--pastel-blue);
       color: #ffffff;
-      border-color: var(--primary);
-      box-shadow: 0 4px 10px rgba(15, 118, 110, 0.25);
+      border-color: var(--pastel-blue);
+      box-shadow: 0 4px 10px rgba(96, 165, 250, 0.28);
     }
 
     /* Task List Items (Touch-Friendly Card) */
@@ -453,6 +568,7 @@
       flex-direction: column;
       gap: 10px;
     }
+
     .task-item {
       background: var(--card-bg);
       border-radius: var(--radius-md);
@@ -467,23 +583,28 @@
       user-select: none;
       min-height: 58px;
     }
+
     .task-item:hover {
       border-color: #cbd5e1;
     }
+
     .task-item:active {
       transform: scale(0.99);
     }
+
     /* Opacity turun saat selesai dicentang */
     .task-item.completed {
       opacity: 0.58;
       background: #f8fafc;
       border-color: #f1f5f9;
     }
+
     /* Tombol Centang Bulat di Sisi Kiri */
     .task-checkbox-btn {
       width: 24px;
       height: 24px;
-      border-radius: 50%; /* Bulat */
+      border-radius: 50%;
+      /* Bulat */
       border: 2px solid #cbd5e1;
       background: transparent;
       display: flex;
@@ -494,27 +615,33 @@
       color: transparent;
       transition: all 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
+
     .task-checkbox-btn:hover {
-      border-color: #10b981;
+      border-color: var(--pastel-blue);
     }
+
     .task-checkbox-btn:active {
       transform: scale(0.9);
     }
+
     .task-checkbox-btn svg {
       width: 14px;
       height: 14px;
       stroke-width: 3;
     }
+
     .task-item.completed .task-checkbox-btn {
-      background: #10b981;
-      border-color: #10b981;
+      background: var(--pastel-blue);
+      border-color: var(--pastel-blue);
       color: #ffffff;
       transform: scale(1.06);
     }
+
     .task-content {
       flex: 1;
       min-width: 0;
     }
+
     .task-title {
       font-size: 14px;
       font-weight: 600;
@@ -522,11 +649,13 @@
       word-break: break-word;
       transition: color 0.25s ease, text-decoration 0.25s ease;
     }
+
     /* Efek teks dicoret (strikethrough) */
     .task-item.completed .task-title {
       text-decoration: line-through;
       color: var(--text-light);
     }
+
     .task-meta {
       display: flex;
       align-items: center;
@@ -534,32 +663,38 @@
       margin-top: 4px;
       font-size: 11px;
     }
+
     .badge-priority {
       font-size: 10px;
       font-weight: 700;
       padding: 2px 7px;
       border-radius: 6px;
     }
+
     .badge-priority.high {
-      background: #fee2e2;
-      color: #ef4444;
-      border: 1px solid #fca5a5;
+      background: var(--pastel-pink-light);
+      color: var(--pastel-pink-text);
+      border: 1px solid var(--pastel-pink-border);
     }
+
     .badge-priority.medium {
-      background: #fef3c7;
-      color: #d97706;
-      border: 1px solid #fde68a;
+      background: var(--pastel-yellow-light);
+      color: var(--pastel-yellow-text);
+      border: 1px solid var(--pastel-yellow-border);
     }
+
     .badge-priority.low {
-      background: #d1fae5;
-      color: #059669;
-      border: 1px solid #a7f3d0;
+      background: var(--pastel-mint-light);
+      color: var(--pastel-mint-text);
+      border: 1px solid var(--pastel-mint-border);
     }
+
     .task-actions {
       display: flex;
       align-items: center;
       gap: 4px;
     }
+
     .btn-icon {
       background: transparent;
       border: none;
@@ -573,16 +708,19 @@
       cursor: pointer;
       transition: all 0.15s ease;
     }
+
     .btn-icon:hover {
-      background: var(--body-bg);
-      color: var(--danger);
+      background: #fdf2f8;
+      color: var(--pastel-pink-text);
     }
+
     .btn-focus-task {
-      color: var(--accent);
+      color: var(--pastel-blue);
     }
+
     .btn-focus-task:hover {
-      background: var(--primary-light);
-      color: var(--primary);
+      background: var(--pastel-blue-light);
+      color: var(--pastel-blue-text);
     }
 
     /* Empty state */
@@ -593,15 +731,18 @@
       border-radius: var(--radius-lg);
       border: 1px dashed var(--border-color);
     }
+
     .empty-state-icon {
       font-size: 40px;
       margin-bottom: 8px;
     }
+
     .empty-state-text {
       font-size: 14px;
       font-weight: 600;
       color: var(--text-main);
     }
+
     .empty-state-sub {
       font-size: 12px;
       color: var(--text-muted);
@@ -617,9 +758,10 @@
       align-items: center;
       padding: 16px 0 10px;
     }
+
     .mode-pills {
       display: flex;
-      background: #e2e8f0;
+      background: #f8fafc;
       padding: 5px;
       border-radius: var(--radius-full);
       gap: 6px;
@@ -627,6 +769,7 @@
       width: 100%;
       border: 1px solid var(--border-color);
     }
+
     .mode-pill-btn {
       flex: 1;
       padding: 10px 8px;
@@ -642,10 +785,11 @@
       font-family: inherit;
       white-space: nowrap;
     }
+
     .mode-pill-btn.active {
-      background: var(--card-bg);
-      color: var(--primary);
-      box-shadow: 0 4px 12px rgba(15, 118, 110, 0.18);
+      background: #ffffff;
+      color: var(--pastel-blue-text);
+      box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
     }
 
     /* =========================================
@@ -653,19 +797,21 @@
        ========================================= */
     .duration-adjust-box {
       width: 100%;
-      background: var(--body-bg);
+      background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       padding: 12px 14px;
       margin-bottom: 20px;
-      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.02);
+      box-shadow: var(--shadow-sm);
     }
+
     .duration-adjust-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 10px;
     }
+
     .duration-adjust-title {
       font-size: 12px;
       font-weight: 700;
@@ -674,24 +820,27 @@
       align-items: center;
       gap: 6px;
     }
+
     .duration-badge {
       font-size: 11px;
       font-weight: 800;
-      background: var(--primary-light);
-      color: var(--primary);
+      background: var(--pastel-yellow-light);
+      color: var(--pastel-yellow-text);
       padding: 3px 10px;
       border-radius: var(--radius-full);
-      border: 1px solid #99f6e4;
+      border: 1px solid var(--pastel-yellow-border);
       font-variant-numeric: tabular-nums;
     }
+
     .duration-stepper-row {
       display: flex;
       align-items: center;
       gap: 8px;
       margin-bottom: 10px;
     }
+
     .btn-step {
-      background: var(--card-bg);
+      background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-sm);
       padding: 6px 9px;
@@ -704,43 +853,51 @@
       white-space: nowrap;
       user-select: none;
     }
+
     .btn-step:hover {
-      border-color: var(--accent);
-      color: var(--primary);
+      border-color: var(--pastel-blue);
+      color: var(--pastel-blue-text);
     }
+
     .btn-step:active {
       transform: scale(0.92);
-      background: var(--primary-light);
+      background: var(--pastel-blue-light);
     }
+
     .duration-slider-wrap {
       flex: 1;
       display: flex;
       align-items: center;
     }
+
     .duration-range-slider {
       width: 100%;
       height: 6px;
       border-radius: 4px;
-      background: #cbd5e1;
+      background: #e2e8f0;
       outline: none;
       -webkit-appearance: none;
+      appearance: none;
       cursor: pointer;
     }
+
     .duration-range-slider::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
       width: 18px;
       height: 18px;
       border-radius: 50%;
-      background: var(--primary);
+      background: var(--pastel-blue);
       border: 2px solid #ffffff;
-      box-shadow: 0 2px 6px rgba(15, 118, 110, 0.4);
+      box-shadow: 0 2px 6px rgba(96, 165, 250, 0.4);
       cursor: pointer;
       transition: transform 0.1s ease;
     }
+
     .duration-range-slider::-webkit-slider-thumb:hover {
       transform: scale(1.15);
     }
+
     .duration-presets-row {
       display: flex;
       gap: 6px;
@@ -748,15 +905,17 @@
       scrollbar-width: none;
       padding-bottom: 2px;
     }
+
     .duration-presets-row::-webkit-scrollbar {
       display: none;
     }
+
     .duration-preset-chip {
       padding: 4px 10px;
       border-radius: var(--radius-full);
       font-size: 11px;
       font-weight: 700;
-      background: var(--card-bg);
+      background: #ffffff;
       border: 1px solid var(--border-color);
       color: var(--text-muted);
       cursor: pointer;
@@ -764,15 +923,17 @@
       transition: all 0.15s ease;
       font-family: inherit;
     }
+
     .duration-preset-chip:hover {
-      border-color: var(--accent);
-      color: var(--primary);
+      border-color: var(--pastel-blue);
+      color: var(--pastel-blue-text);
     }
+
     .duration-preset-chip.active {
-      background: var(--primary);
+      background: var(--pastel-blue);
       color: #ffffff;
-      border-color: var(--primary);
-      box-shadow: 0 2px 6px rgba(15, 118, 110, 0.25);
+      border-color: var(--pastel-blue);
+      box-shadow: 0 2px 6px rgba(96, 165, 250, 0.3);
     }
 
     /* Circular SVG Timer (Tampilan Waktu Besar) */
@@ -782,16 +943,19 @@
       height: 240px;
       margin-bottom: 24px;
     }
+
     .timer-svg {
       transform: rotate(-90deg);
       width: 100%;
       height: 100%;
     }
+
     .timer-bg-circle {
       fill: none;
       stroke: #f1f5f9;
       stroke-width: 12;
     }
+
     .timer-progress-circle {
       fill: none;
       stroke: url(#timerGradient);
@@ -801,6 +965,7 @@
       stroke-dashoffset: 0;
       transition: stroke-dashoffset 0.5s linear;
     }
+
     .timer-center-content {
       position: absolute;
       top: 0;
@@ -812,6 +977,7 @@
       align-items: center;
       justify-content: center;
     }
+
     .timer-time {
       font-size: 52px;
       font-weight: 800;
@@ -820,14 +986,16 @@
       font-variant-numeric: tabular-nums;
       line-height: 1;
     }
+
     .timer-label {
       font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
-      color: var(--accent);
+      color: var(--pastel-blue);
       margin-top: 8px;
     }
+
     .timer-active-task {
       font-size: 11px;
       font-weight: 500;
@@ -847,6 +1015,7 @@
       width: 100%;
       margin-bottom: 18px;
     }
+
     .btn-timer-action {
       flex: 1;
       height: 52px;
@@ -863,60 +1032,79 @@
       transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       user-select: none;
     }
+
     .btn-timer-action:active:not(:disabled) {
       transform: scale(0.96);
     }
+
     .btn-timer-action svg {
       width: 18px;
       height: 18px;
     }
-    /* Mulai (Start) Button */
+
+    /* Mulai (Start) Button: Soft Blue to Soft Pink */
     .btn-timer-action.btn-start {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--pastel-pink) 100%);
       color: #ffffff;
       border-color: transparent;
-      box-shadow: 0 8px 18px -3px rgba(15, 118, 110, 0.35);
+      box-shadow: var(--shadow-pastel);
     }
+
     .btn-timer-action.btn-start:disabled {
       opacity: 0.45;
       cursor: not-allowed;
       box-shadow: none;
     }
-    /* Jeda (Pause) Button */
+
+    /* Jeda (Pause) Button: Butter Yellow */
     .btn-timer-action.btn-pause {
-      background: #fffbeb;
-      color: #d97706;
-      border-color: #fde68a;
+      background: var(--pastel-yellow-light);
+      color: var(--pastel-yellow-text);
+      border-color: var(--pastel-yellow-border);
     }
+
     .btn-timer-action.btn-pause.running {
-      background: #f59e0b;
-      color: #ffffff;
-      border-color: #f59e0b;
-      box-shadow: 0 8px 18px -3px rgba(245, 158, 11, 0.4);
+      background: var(--pastel-yellow);
+      color: #713f12;
+      border-color: var(--pastel-yellow-hover);
+      box-shadow: 0 8px 18px -3px rgba(250, 204, 21, 0.45);
       animation: pausePulse 1.8s infinite;
     }
+
     @keyframes pausePulse {
-      0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
-      70% { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+      0% {
+        box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.45);
+      }
+
+      70% {
+        box-shadow: 0 0 0 8px rgba(250, 204, 21, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(250, 204, 21, 0);
+      }
     }
+
     .btn-timer-action.btn-pause:disabled {
       opacity: 0.45;
       cursor: not-allowed;
-      background: var(--body-bg);
+      background: #f8fafc;
       border-color: var(--border-color);
       color: var(--text-muted);
     }
+
     /* Atur Ulang (Reset) Button */
     .btn-timer-action.btn-reset {
-      background: var(--card-bg);
+      background: #ffffff;
       color: var(--text-muted);
       border-color: var(--border-color);
       box-shadow: var(--shadow-sm);
     }
+
     .btn-timer-action.btn-reset:hover {
-      color: var(--danger);
-      border-color: #fca5a5;
+      color: var(--pastel-pink-text);
+      border-color: var(--pastel-pink-border);
+      background: var(--pastel-pink-light);
     }
 
     /* Modal Ajakan Refleksi */
@@ -926,7 +1114,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(15, 23, 42, 0.65);
+      background: rgba(15, 23, 42, 0.5);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       display: flex;
@@ -938,10 +1126,12 @@
       pointer-events: none;
       transition: opacity 0.28s ease;
     }
+
     .modal-overlay.show {
       opacity: 1;
       pointer-events: auto;
     }
+
     .modal-card {
       background: #ffffff;
       border-radius: var(--radius-lg);
@@ -949,49 +1139,62 @@
       width: 100%;
       max-width: 360px;
       text-align: center;
-      box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+      box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.18);
       transform: translateY(20px) scale(0.95);
       transition: transform 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       border: 1px solid var(--border-color);
     }
+
     .modal-overlay.show .modal-card {
       transform: translateY(0) scale(1);
     }
+
     .modal-badge-icon {
       font-size: 46px;
       margin-bottom: 10px;
       display: inline-block;
       animation: bounceTada 1s ease infinite alternate;
     }
+
     @keyframes bounceTada {
-      from { transform: scale(1); }
-      to { transform: scale(1.12); }
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.12);
+      }
     }
+
     .modal-title {
       font-size: 18px;
       font-weight: 800;
       color: var(--text-main);
       margin-bottom: 6px;
     }
+
     .modal-subtitle {
       font-size: 13px;
-      font-weight: 600;
-      color: var(--primary);
+      font-weight: 700;
+      color: var(--pastel-blue-text);
       margin-bottom: 12px;
     }
+
     .modal-desc {
       font-size: 12px;
       color: var(--text-muted);
       line-height: 1.5;
       margin-bottom: 22px;
     }
+
     .modal-actions {
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
+
     .modal-btn-primary {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--pastel-pink) 100%);
       color: #ffffff;
       border: none;
       padding: 13px;
@@ -1004,16 +1207,18 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      box-shadow: var(--shadow-teal);
+      box-shadow: var(--shadow-pastel);
       transition: transform 0.15s ease;
     }
+
     .modal-btn-primary:active {
       transform: scale(0.97);
     }
+
     .modal-btn-secondary {
-      background: var(--body-bg);
-      color: var(--text-muted);
-      border: 1px solid var(--border-color);
+      background: var(--pastel-yellow-light);
+      color: var(--pastel-yellow-text);
+      border: 1px solid var(--pastel-yellow-border);
       padding: 11px;
       border-radius: var(--radius-md);
       font-family: inherit;
@@ -1022,9 +1227,10 @@
       cursor: pointer;
       transition: all 0.15s ease;
     }
+
     .modal-btn-secondary:hover {
-      background: #f1f5f9;
-      color: var(--text-main);
+      background: var(--pastel-yellow);
+      color: #713f12;
     }
 
     /* Ambient Audio Card */
@@ -1032,34 +1238,39 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: var(--primary-subtle);
-      border: 1px solid #ccfbf1;
+      background: var(--pastel-blue-subtle);
+      border: 1px solid var(--pastel-blue-border);
       padding: 12px 16px;
       border-radius: var(--radius-md);
       width: 100%;
       margin-top: 10px;
     }
+
     .ambient-info {
       display: flex;
       align-items: center;
       gap: 10px;
     }
+
     .ambient-icon {
       font-size: 20px;
     }
+
     .ambient-title {
       font-size: 13px;
       font-weight: 700;
-      color: var(--primary);
+      color: var(--pastel-blue-text);
     }
+
     .ambient-desc {
       font-size: 11px;
       color: var(--text-muted);
     }
+
     .ambient-btn {
       background: #ffffff;
-      border: 1px solid #99f6e4;
-      color: var(--primary);
+      border: 1px solid var(--pastel-blue-border);
+      color: var(--pastel-blue-text);
       padding: 6px 12px;
       border-radius: var(--radius-full);
       font-size: 11px;
@@ -1072,10 +1283,11 @@
       box-shadow: var(--shadow-sm);
       transition: all 0.15s ease;
     }
+
     .ambient-btn.active {
-      background: var(--primary);
+      background: var(--pastel-blue);
       color: #ffffff;
-      border-color: var(--primary);
+      border-color: var(--pastel-blue);
     }
 
     /* =========================================
@@ -1089,12 +1301,14 @@
       margin-bottom: 12px;
       box-shadow: var(--shadow-sm);
     }
+
     .spotify-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 12px;
     }
+
     .spotify-brand {
       display: flex;
       align-items: center;
@@ -1103,12 +1317,14 @@
       font-weight: 800;
       color: var(--text-main);
     }
+
     .spotify-brand svg {
       width: 22px;
       height: 22px;
       fill: #1db954;
       flex-shrink: 0;
     }
+
     .spotify-badge {
       font-size: 10px;
       font-weight: 700;
@@ -1120,6 +1336,7 @@
       align-items: center;
       gap: 4px;
     }
+
     .spotify-badge::before {
       content: '';
       width: 6px;
@@ -1128,6 +1345,7 @@
       border-radius: 50%;
       display: inline-block;
     }
+
     .spotify-chips-wrap {
       display: flex;
       gap: 6px;
@@ -1136,9 +1354,11 @@
       margin-bottom: 10px;
       scrollbar-width: none;
     }
+
     .spotify-chips-wrap::-webkit-scrollbar {
       display: none;
     }
+
     .spotify-chip {
       font-size: 11px;
       font-weight: 600;
@@ -1155,16 +1375,19 @@
       transition: all 0.15s ease;
       user-select: none;
     }
+
     .spotify-chip:hover {
       border-color: #1db954;
       color: #1db954;
     }
+
     .spotify-chip.active {
       background: #1db954;
       color: #ffffff;
       border-color: #1db954;
       box-shadow: 0 4px 10px rgba(29, 185, 84, 0.35);
     }
+
     .spotify-chip .btn-del-playlist {
       background: transparent;
       border: none;
@@ -1175,9 +1398,11 @@
       cursor: pointer;
       opacity: 0.7;
     }
+
     .spotify-chip .btn-del-playlist:hover {
       opacity: 1;
     }
+
     .btn-toggle-add-playlist {
       background: var(--primary-subtle);
       color: var(--primary);
@@ -1193,9 +1418,11 @@
       white-space: nowrap;
       transition: all 0.15s ease;
     }
+
     .btn-toggle-add-playlist:hover {
       background: var(--primary-light);
     }
+
     .spotify-add-form {
       display: none;
       background: var(--body-bg);
@@ -1205,18 +1432,29 @@
       margin-bottom: 12px;
       animation: fadeInForm 0.2s ease-out;
     }
+
     @keyframes fadeInForm {
-      from { opacity: 0; transform: translateY(-4px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+
     .spotify-add-form.show {
       display: block;
     }
+
     .spotify-form-grid {
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
+
     .spotify-form-hint {
       font-size: 10px;
       color: var(--text-muted);
@@ -1226,6 +1464,7 @@
       border-radius: var(--radius-sm);
       border: 1px solid var(--border-color);
     }
+
     .spotify-player-wrap {
       width: 100%;
       border-radius: 12px;
@@ -1234,6 +1473,7 @@
       box-shadow: var(--shadow-sm);
       transition: height 0.3s ease;
     }
+
     .spotify-player-wrap iframe {
       width: 100%;
       height: 152px;
@@ -1241,6 +1481,7 @@
       display: block;
       transition: height 0.25s ease;
     }
+
     .spotify-footer-actions {
       display: flex;
       justify-content: space-between;
@@ -1249,6 +1490,7 @@
       padding-top: 6px;
       font-size: 11px;
     }
+
     .btn-player-size {
       background: transparent;
       border: none;
@@ -1260,6 +1502,7 @@
       align-items: center;
       gap: 4px;
     }
+
     .btn-open-spotify-app {
       color: var(--text-muted);
       text-decoration: none;
@@ -1269,6 +1512,7 @@
       align-items: center;
       gap: 4px;
     }
+
     .btn-open-spotify-app:hover {
       color: #1db954;
     }
@@ -1281,6 +1525,7 @@
       margin-top: 14px;
       width: 100%;
     }
+
     .focus-stat-item {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
@@ -1288,11 +1533,13 @@
       padding: 12px 8px;
       text-align: center;
     }
+
     .focus-stat-value {
       font-size: 16px;
       font-weight: 800;
       color: var(--primary);
     }
+
     .focus-stat-label {
       font-size: 10px;
       color: var(--text-muted);
@@ -1306,92 +1553,134 @@
     .mood-tracker {
       margin-bottom: 16px;
     }
+
     .mood-title {
       font-size: 13px;
       font-weight: 700;
       color: var(--text-muted);
       margin-bottom: 10px;
     }
+
     .mood-row {
       display: flex;
       justify-content: space-between;
       gap: 6px;
     }
+
     .mood-btn {
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 8px 4px;
-      background: var(--card-bg);
+      background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       cursor: pointer;
       transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
+
     .mood-btn:hover {
       transform: translateY(-2px);
     }
+
     .mood-btn.active {
-      background: var(--primary-light);
-      border-color: var(--accent);
+      background: var(--pastel-blue-light);
+      border-color: var(--pastel-blue);
       transform: scale(1.05);
-      box-shadow: 0 4px 10px rgba(20, 184, 166, 0.2);
+      box-shadow: 0 4px 10px rgba(96, 165, 250, 0.22);
     }
+
     .mood-emoji {
       font-size: 22px;
     }
+
     .mood-label {
       font-size: 9px;
       font-weight: 700;
       color: var(--text-muted);
       margin-top: 4px;
     }
+
     .mood-btn.active .mood-label {
-      color: var(--primary);
+      color: var(--pastel-blue-text);
     }
 
-    /* Quote of the Day */
+    /* Quote of the Day: Pastel Dream Gradient */
     .quote-box {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+      background: linear-gradient(135deg, #60a5fa 0%, #c084fc 50%, #f472b6 100%);
       color: #ffffff;
-      padding: 16px;
+      padding: 16px 18px;
       border-radius: var(--radius-lg);
       margin-bottom: 16px;
       position: relative;
       overflow: hidden;
-      box-shadow: var(--shadow-teal);
+      box-shadow: 0 10px 25px -4px rgba(96, 165, 250, 0.28);
     }
+
     .quote-box::after {
       content: '"';
       position: absolute;
       right: 12px;
       bottom: -15px;
       font-size: 80px;
-      opacity: 0.12;
+      opacity: 0.15;
       font-family: serif;
       pointer-events: none;
     }
+
     .quote-text {
       font-size: 13px;
       font-weight: 600;
-      line-height: 1.5;
+      line-height: 1.55;
       font-style: italic;
     }
+
     .quote-author {
       font-size: 11px;
-      color: #a7f3d0;
+      color: #fefce8;
       margin-top: 6px;
-      font-weight: 600;
+      font-weight: 700;
       display: block;
     }
 
-    /* Journal Form */
-    .journal-form {
+    /* =========================================
+       FORM & RIWAYAT JURNAL REFLEKSI (PASTEL)
+       ========================================= */
+    .journal-form,
+    .reflection-form {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .form-label-desc {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .date-input-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
     .journal-input {
       width: 100%;
       border: 1px solid var(--border-color);
@@ -1400,124 +1689,312 @@
       font-family: inherit;
       font-size: 13px;
       color: var(--text-main);
-      background: var(--body-bg);
-      outline: none;
-      transition: border-color 0.15s ease;
-    }
-    .journal-input:focus {
-      border-color: var(--accent);
       background: #ffffff;
+      outline: none;
+      transition: all 0.18s ease;
     }
-    .journal-textarea {
-      min-height: 85px;
-      resize: vertical;
+
+    .journal-input:focus {
+      border-color: var(--pastel-blue);
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.18);
     }
-    .journal-category-select {
-      display: flex;
-      gap: 6px;
-      overflow-x: auto;
-      padding: 2px 0;
+
+    .journal-select {
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2360a5fa' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-size: 14px;
+      padding-right: 36px;
     }
-    .cat-pill {
+
+    .btn-today-badge {
+      background: var(--pastel-yellow-light);
+      color: var(--pastel-yellow-text);
+      border: 1px solid var(--pastel-yellow-border);
+      padding: 9px 12px;
+      border-radius: var(--radius-md);
       font-size: 11px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: var(--radius-full);
-      border: 1px solid var(--border-color);
-      background: var(--body-bg);
-      color: var(--text-muted);
+      font-weight: 700;
+      font-family: inherit;
       cursor: pointer;
       white-space: nowrap;
       transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
-    .cat-pill.active {
-      background: var(--primary);
-      color: #ffffff;
-      border-color: var(--primary);
+
+    .btn-today-badge:hover,
+    .btn-today-badge:active {
+      background: var(--pastel-yellow);
+      color: #713f12;
     }
-    .btn-save-journal {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+
+    .quick-subject-chips {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 2px 0 4px;
+      scrollbar-width: none;
+    }
+
+    .quick-subject-chips::-webkit-scrollbar {
+      display: none;
+    }
+
+    .quick-sub-chip {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 5px 11px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-color);
+      background: #ffffff;
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.18s ease;
+      user-select: none;
+    }
+
+    .quick-sub-chip:hover {
+      border-color: var(--pastel-blue);
+      color: var(--pastel-blue-text);
+    }
+
+    .quick-sub-chip.active {
+      background: var(--pastel-blue-light);
+      color: var(--pastel-blue-text);
+      border-color: var(--pastel-blue-border);
+      font-weight: 700;
+      box-shadow: 0 2px 6px rgba(96, 165, 250, 0.2);
+    }
+
+    .understanding-level-selector {
+      display: flex;
+      gap: 8px;
+    }
+
+    .understand-pill {
+      flex: 1;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 8px 6px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      background: #ffffff;
+      color: var(--text-muted);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+      user-select: none;
+      font-family: inherit;
+    }
+
+    .understand-pill.active {
+      background: var(--pastel-mint-light);
+      color: var(--pastel-mint-text);
+      border-color: var(--pastel-mint);
+      font-weight: 700;
+      box-shadow: 0 2px 6px rgba(110, 231, 183, 0.28);
+    }
+
+    .understand-pill[data-level="Cukup Paham"].active {
+      background: var(--pastel-blue-light);
+      color: var(--pastel-blue-text);
+      border-color: var(--pastel-blue);
+      box-shadow: 0 2px 6px rgba(96, 165, 250, 0.28);
+    }
+
+    .understand-pill.warning.active,
+    .understand-pill[data-level="Perlu Diulang"].active {
+      background: var(--pastel-pink-light);
+      color: var(--pastel-pink-text);
+      border-color: var(--pastel-pink);
+      box-shadow: 0 2px 6px rgba(244, 114, 182, 0.28);
+    }
+
+    .understand-pill:active {
+      transform: scale(0.96);
+    }
+
+    .journal-textarea {
+      min-height: 95px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    .btn-save-journal,
+    .btn-save-reflection {
+      background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--pastel-pink) 100%);
       color: #ffffff;
       border: none;
       border-radius: var(--radius-md);
-      padding: 10px;
-      font-size: 13px;
+      padding: 13px 18px;
+      font-size: 13.5px;
       font-weight: 700;
       font-family: inherit;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      box-shadow: var(--shadow-teal);
-      transition: transform 0.15s ease;
-    }
-    .btn-save-journal:active {
-      transform: scale(0.98);
+      gap: 8px;
+      box-shadow: var(--shadow-pastel);
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      user-select: none;
+      width: 100%;
     }
 
-    /* Journal Entry Cards */
+    .btn-save-journal:hover,
+    .btn-save-reflection:hover {
+      box-shadow: 0 10px 24px -4px rgba(244, 114, 182, 0.38);
+      transform: translateY(-1px);
+    }
+
+    .btn-save-journal:active,
+    .btn-save-reflection:active {
+      transform: scale(0.97);
+    }
+
+    .btn-save-journal svg,
+    .btn-save-reflection svg {
+      flex-shrink: 0;
+    }
+
+    /* Reflection Entry Cards & Feed */
+    .reflection-feed,
     .journal-feed {
       display: flex;
       flex-direction: column;
       gap: 12px;
-      margin-top: 16px;
+      margin-top: 14px;
     }
+
+    .reflection-card,
     .journal-entry-card {
-      background: var(--card-bg);
+      background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
       padding: 16px;
       box-shadow: var(--shadow-sm);
-      transition: transform 0.15s ease;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
     }
-    .entry-header {
+
+    .reflection-card:hover,
+    .journal-entry-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: #cbd5e1;
+    }
+
+    .reflection-card-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 8px;
+      gap: 8px;
     }
-    .entry-title {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-    .entry-meta {
+
+    .reflection-meta-tags {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 6px;
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-bottom: 8px;
     }
-    .entry-badge {
+
+    .subject-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: var(--radius-full);
+      background: var(--pastel-blue-light);
+      color: var(--pastel-blue-text);
+      border: 1px solid var(--pastel-blue-border);
+    }
+
+    .level-badge {
       font-size: 10px;
       font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 6px;
-      background: var(--primary-light);
-      color: var(--primary);
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      background: var(--pastel-mint-light);
+      color: var(--pastel-mint-text);
+      border: 1px solid var(--pastel-mint-border);
     }
-    .entry-body {
+
+    .level-badge.warning {
+      background: var(--pastel-pink-light);
+      color: var(--pastel-pink-text);
+      border-color: var(--pastel-pink-border);
+    }
+
+    .date-badge {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 500;
+    }
+
+    .reflection-content-box {
       font-size: 13px;
-      color: #334155;
-      line-height: 1.5;
+      color: #1e293b;
+      line-height: 1.55;
       white-space: pre-line;
       word-break: break-word;
+      background: #f8fafc;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      border-left: 3.5px solid var(--pastel-blue);
     }
-    .entry-footer {
+
+    .reflection-card-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 10px;
-      padding-top: 8px;
-      border-top: 1px solid var(--border-subtle);
       font-size: 11px;
       color: var(--text-light);
+      padding-top: 4px;
+    }
+
+    .btn-delete-reflection,
+    .btn-delete-journal {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-light);
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+      flex-shrink: 0;
+    }
+
+    .btn-delete-reflection:hover,
+    .btn-delete-journal:hover {
+      color: var(--pastel-pink-text);
+      background: var(--pastel-pink-light);
+      border-color: var(--pastel-pink-border);
+    }
+
+    .btn-delete-reflection:active,
+    .btn-delete-journal:active {
+      transform: scale(0.92);
     }
 
     /* =========================================
-       BOTTOM NAVIGATION BAR (FIXED BOTTOM)
+       BOTTOM NAVIGATION BAR (FIXED BOTTOM: PURE WHITE BASE)
        ========================================= */
     .bottom-nav {
       position: fixed;
@@ -1527,7 +2004,7 @@
       width: 100%;
       max-width: 420px;
       height: var(--nav-height);
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-top: 1px solid var(--border-color);
@@ -1535,7 +2012,7 @@
       justify-content: space-around;
       align-items: center;
       z-index: 100;
-      box-shadow: 0 -4px 16px rgba(15, 23, 42, 0.04);
+      box-shadow: 0 -4px 16px rgba(15, 23, 42, 0.03);
       padding: 0 10px;
       padding-bottom: env(safe-area-inset-bottom);
     }
@@ -1591,24 +2068,62 @@
       transition: color 0.2s ease, font-weight 0.2s ease;
     }
 
-    /* Active Tab State */
-    .nav-tab-btn.active {
-      color: var(--primary);
+    /* Active Tab State: Harmonious Pastel Tones */
+    .nav-tab-btn[data-tab="tab-tasks"].active {
+      color: var(--pastel-blue-text);
     }
 
-    .nav-tab-btn.active .nav-icon-wrap {
-      background: var(--primary-light);
-      color: var(--primary);
+    .nav-tab-btn[data-tab="tab-tasks"].active .nav-icon-wrap {
+      background: var(--pastel-blue-light);
+      color: var(--pastel-blue-text);
     }
 
-    .nav-tab-btn.active .nav-icon-wrap svg {
+    .nav-tab-btn[data-tab="tab-tasks"].active .nav-icon-wrap svg {
       transform: scale(1.12);
-      stroke: var(--primary);
+      stroke: var(--pastel-blue-text);
     }
 
-    .nav-tab-btn.active .nav-label {
+    .nav-tab-btn[data-tab="tab-tasks"].active .nav-label {
       font-weight: 800;
-      color: var(--primary);
+      color: var(--pastel-blue-text);
+    }
+
+    .nav-tab-btn[data-tab="tab-focus"].active {
+      color: var(--pastel-pink-text);
+    }
+
+    .nav-tab-btn[data-tab="tab-focus"].active .nav-icon-wrap {
+      background: var(--pastel-pink-light);
+      color: var(--pastel-pink-text);
+    }
+
+    .nav-tab-btn[data-tab="tab-focus"].active .nav-icon-wrap svg {
+      transform: scale(1.12);
+      stroke: var(--pastel-pink-text);
+    }
+
+    .nav-tab-btn[data-tab="tab-focus"].active .nav-label {
+      font-weight: 800;
+      color: var(--pastel-pink-text);
+    }
+
+    .nav-tab-btn[data-tab="tab-journal"].active {
+      color: var(--pastel-purple-text);
+    }
+
+    .nav-tab-btn[data-tab="tab-journal"].active .nav-icon-wrap {
+      background: var(--pastel-purple-light);
+      color: var(--pastel-purple-text);
+    }
+
+    .nav-tab-btn[data-tab="tab-journal"].active .nav-icon-wrap svg {
+      transform: scale(1.12);
+      stroke: var(--pastel-purple-text);
+    }
+
+    .nav-tab-btn[data-tab="tab-journal"].active .nav-label {
+      font-weight: 800;
+      color: var(--pastel-purple-text);
     }
 
     /* Badge on Nav */
@@ -1616,7 +2131,7 @@
       position: absolute;
       top: -2px;
       right: 2px;
-      background: var(--accent);
+      background: var(--pastel-pink);
       color: #ffffff;
       font-size: 10px;
       font-weight: 800;
@@ -1628,7 +2143,7 @@
       justify-content: center;
       padding: 0 4px;
       border: 2px solid #ffffff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     /* Active pulse dot for running focus timer */
@@ -1639,16 +2154,27 @@
       right: 4px;
       width: 8px;
       height: 8px;
-      background: #ef4444;
+      background: var(--pastel-pink);
       border-radius: 50%;
       box-shadow: 0 0 0 2px #ffffff;
       animation: pulseDot 1.4s infinite;
     }
 
     @keyframes pulseDot {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-      70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(244, 114, 182, 0.7);
+      }
+
+      70% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 6px rgba(244, 114, 182, 0);
+      }
+
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(244, 114, 182, 0);
+      }
     }
 
     /* =========================================
@@ -1659,7 +2185,7 @@
       top: 18px;
       left: 50%;
       transform: translateX(-50%) translateY(-60px);
-      background: #0f172a;
+      background: #1e293b;
       color: #ffffff;
       padding: 10px 18px;
       border-radius: var(--radius-full);
@@ -1675,15 +2201,18 @@
       transition: transform 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.28s ease;
       max-width: 90%;
     }
+
     .toast.show {
       transform: translateX(-50%) translateY(0);
       opacity: 1;
     }
+
     .toast-icon {
-      color: var(--accent);
+      color: var(--pastel-yellow);
     }
   </style>
 </head>
+
 <body>
 
   <!-- =========================================
@@ -1696,11 +2225,19 @@
       <span id="liveClock">09:41</span>
       <div class="status-bar-icons">
         <!-- Signal Icon -->
-        <svg viewBox="0 0 24 24"><path d="M2 20h20L12 4z"/></svg>
+        <svg viewBox="0 0 24 24">
+          <path d="M2 20h20L12 4z" />
+        </svg>
         <!-- Wifi Icon -->
-        <svg viewBox="0 0 24 24"><path d="M12 18c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-4.9-4.9l1.4 1.4C9.6 13.4 10.7 13 12 13s2.4.4 3.5 1.5l1.4-1.4C15.4 11.6 13.8 11 12 11s-3.4.6-4.9 2.1zm-4.2-4.2l1.4 1.4C6.5 8.1 9.1 7 12 7s5.5 1.1 7.7 3.3l1.4-1.4C18.6 6.4 15.5 5 12 5s-6.6 1.4-9.1 3.9z"/></svg>
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M12 18c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-4.9-4.9l1.4 1.4C9.6 13.4 10.7 13 12 13s2.4.4 3.5 1.5l1.4-1.4C15.4 11.6 13.8 11 12 11s-3.4.6-4.9 2.1zm-4.2-4.2l1.4 1.4C6.5 8.1 9.1 7 12 7s5.5 1.1 7.7 3.3l1.4-1.4C18.6 6.4 15.5 5 12 5s-6.6 1.4-9.1 3.9z" />
+        </svg>
         <!-- Battery Icon -->
-        <svg viewBox="0 0 24 24"><path d="M17 5v14h-10v-14h10zm2-2h-14c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-4h1v-4h-1v-4c0-1.1-.9-2-2-2z"/></svg>
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M17 5v14h-10v-14h10zm2-2h-14c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-4h1v-4h-1v-4c0-1.1-.9-2-2-2z" />
+        </svg>
       </div>
     </div>
 
@@ -1710,7 +2247,8 @@
         <div class="brand">
           <div class="brand-icon">
             <!-- Diamond / Compass Productivity Logo -->
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
+              stroke-linecap="round" stroke-linejoin="round">
               <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
               <line x1="12" y1="22" x2="12" y2="15.5"></line>
               <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
@@ -1764,15 +2302,11 @@
         <!-- New Task Form -->
         <div class="task-input-wrapper">
           <div class="task-input-main">
-            <input 
-              type="text" 
-              id="newTaskInput" 
-              class="task-input" 
-              placeholder="Tulis tugas baru hari ini..."
-              autocomplete="off"
-            >
+            <input type="text" id="newTaskInput" class="task-input" placeholder="Tulis tugas baru hari ini..."
+              autocomplete="off">
             <button class="btn-add-task" id="btnAddTask" title="Tambah Tugas">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
                 <line x1="12" y1="5" x2="12" y2="19"></line>
                 <line x1="5" y1="12" x2="19" y2="12"></line>
               </svg>
@@ -1784,15 +2318,15 @@
             <span style="font-size: 11px; font-weight: 700; color: var(--text-muted);">Pilih Prioritas:</span>
             <div class="priority-selector">
               <button type="button" class="priority-pill" data-priority="high">
-                <span class="priority-dot" style="background:#ef4444;"></span>
+                <span class="priority-dot" style="background:#f472b6;"></span>
                 <span>Tinggi</span>
               </button>
               <button type="button" class="priority-pill active" data-priority="medium">
-                <span class="priority-dot" style="background:#f59e0b;"></span>
+                <span class="priority-dot" style="background:#fde047;"></span>
                 <span>Sedang</span>
               </button>
               <button type="button" class="priority-pill" data-priority="low">
-                <span class="priority-dot" style="background:#10b981;"></span>
+                <span class="priority-dot" style="background:#6ee7b7;"></span>
                 <span>Rendah</span>
               </button>
             </div>
@@ -1829,7 +2363,10 @@
             <div class="duration-adjust-box">
               <div class="duration-adjust-header">
                 <span class="duration-adjust-title">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
                   <span>Sesuaikan Durasi:</span>
                 </span>
                 <span class="duration-badge" id="customMinsBadge">25 Menit</span>
@@ -1838,7 +2375,8 @@
                 <button type="button" class="btn-step" id="btnStepMinus5" title="Kurangi 5 Menit">-5m</button>
                 <button type="button" class="btn-step" id="btnStepMinus1" title="Kurangi 1 Menit">-1m</button>
                 <div class="duration-slider-wrap">
-                  <input type="range" id="durationSlider" min="1" max="90" value="25" class="duration-range-slider" aria-label="Geser untuk atur menit">
+                  <input type="range" id="durationSlider" min="1" max="90" value="25" class="duration-range-slider"
+                    aria-label="Geser untuk atur menit">
                 </div>
                 <button type="button" class="btn-step" id="btnStepPlus1" title="Tambah 1 Menit">+1m</button>
                 <button type="button" class="btn-step" id="btnStepPlus5" title="Tambah 5 Menit">+5m</button>
@@ -1853,8 +2391,8 @@
               <svg class="timer-svg" viewBox="0 0 240 240">
                 <defs>
                   <linearGradient id="timerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#0f766e" />
-                    <stop offset="100%" stop-color="#14b8a6" />
+                    <stop offset="0%" stop-color="#60a5fa" />
+                    <stop offset="100%" stop-color="#f472b6" />
                   </linearGradient>
                 </defs>
                 <circle class="timer-bg-circle" cx="120" cy="120" r="104" />
@@ -1870,17 +2408,23 @@
             <!-- Tombol Kontrol Ramah Jempol: Mulai, Jeda, Atur Ulang -->
             <div class="timer-controls-bar">
               <button class="btn-timer-action btn-start" id="btnStartTimer" title="Mulai Sesi Timer">
-                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="6 4 20 12 6 20 6 4" />
+                </svg>
                 <span>Mulai</span>
               </button>
               <button class="btn-timer-action btn-pause" id="btnPauseTimer" disabled title="Jeda Timer">
-                <svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <rect x="6" y="4" width="4" height="16" />
+                  <rect x="14" y="4" width="4" height="16" />
+                </svg>
                 <span>Jeda</span>
               </button>
               <button class="btn-timer-action btn-reset" id="btnResetTimer" title="Atur Ulang Waktu">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
-                  <path d="M3 3v5h5"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                  <path d="M3 3v5h5" />
                 </svg>
                 <span>Atur Ulang</span>
               </button>
@@ -1914,7 +2458,8 @@
           <div class="spotify-header">
             <div class="spotify-brand">
               <svg viewBox="0 0 24 24">
-                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.498 17.307c-.216.353-.674.466-1.026.25-2.825-1.727-6.381-2.118-10.569-1.162-.404.093-.807-.159-.9-.563-.093-.404.159-.807.563-.9 4.584-1.047 8.52-.601 11.682 1.348.352.216.465.674.25 1.027zm1.467-3.262c-.272.443-.852.585-1.295.313-3.235-1.988-8.167-2.563-11.993-1.401-.497.151-1.026-.134-1.177-.631-.151-.497.134-1.026.631-1.177 4.38-1.33 9.816-.689 13.521 1.599.443.272.585.852.313 1.297zm.126-3.41c-3.876-2.302-10.27-2.514-13.98-1.388-.593.18-1.224-.16-1.404-.753-.18-.593.16-1.224.753-1.404 4.264-1.295 11.317-1.048 15.794 1.61.533.316.708 1.006.392 1.539-.316.533-1.006.708-1.555.396z"/>
+                <path
+                  d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.498 17.307c-.216.353-.674.466-1.026.25-2.825-1.727-6.381-2.118-10.569-1.162-.404.093-.807-.159-.9-.563-.093-.404.159-.807.563-.9 4.584-1.047 8.52-.601 11.682 1.348.352.216.465.674.25 1.027zm1.467-3.262c-.272.443-.852.585-1.295.313-3.235-1.988-8.167-2.563-11.993-1.401-.497.151-1.026-.134-1.177-.631-.151-.497.134-1.026.631-1.177 4.38-1.33 9.816-.689 13.521 1.599.443.272.585.852.313 1.297zm.126-3.41c-3.876-2.302-10.27-2.514-13.98-1.388-.593.18-1.224-.16-1.404-.753-.18-.593.16-1.224.753-1.404 4.264-1.295 11.317-1.048 15.794 1.61.533.316.708 1.006.392 1.539-.316.533-1.006.708-1.555.396z" />
               </svg>
               <span>Musik Fokus Spotify</span>
             </div>
@@ -1929,28 +2474,22 @@
           <!-- Add Custom Playlist Form (Expandable) -->
           <div class="spotify-add-form" id="spotifyAddForm">
             <div class="spotify-form-grid">
-              <input 
-                type="text" 
-                id="customPlaylistName" 
-                class="journal-input" 
-                placeholder="Nama Playlist (contoh: Belajar Santai)" 
-                style="font-size: 12px; padding: 7px 10px;"
-              >
-              <input 
-                type="text" 
-                id="customPlaylistUrl" 
-                class="journal-input" 
-                placeholder="Link Spotify (https://open.spotify.com/playlist/...)" 
-                style="font-size: 12px; padding: 7px 10px;"
-              >
+              <input type="text" id="customPlaylistName" class="journal-input"
+                placeholder="Nama Playlist (contoh: Belajar Santai)" style="font-size: 12px; padding: 7px 10px;">
+              <input type="text" id="customPlaylistUrl" class="journal-input"
+                placeholder="Link Spotify (https://open.spotify.com/playlist/...)"
+                style="font-size: 12px; padding: 7px 10px;">
               <div class="spotify-form-hint">
-                💡 <b>Cara salin link di Spotify:</b> Buka lagu/playlist di Spotify &gt; klik titik tiga (•••) &gt; Bagikan (Share) &gt; Salin Tautan (Copy Link).
+                💡 <b>Cara salin link di Spotify:</b> Buka lagu/playlist di Spotify &gt; klik titik tiga (•••) &gt;
+                Bagikan (Share) &gt; Salin Tautan (Copy Link).
               </div>
               <div style="display: flex; gap: 8px;">
-                <button type="button" class="btn-save-journal" id="btnSaveCustomPlaylist" style="flex: 1; padding: 7px; font-size: 12px;">
+                <button type="button" class="btn-save-journal" id="btnSaveCustomPlaylist"
+                  style="flex: 1; padding: 7px; font-size: 12px;">
                   Simpan ke Daftar
                 </button>
-                <button type="button" id="btnCancelAddPlaylist" class="mode-pill-btn" style="padding: 7px 14px; border: 1px solid var(--border-color);">
+                <button type="button" id="btnCancelAddPlaylist" class="mode-pill-btn"
+                  style="padding: 7px 14px; border: 1px solid var(--border-color);">
                   Batal
                 </button>
               </div>
@@ -1959,25 +2498,31 @@
 
           <!-- Spotify Embedded Player -->
           <div class="spotify-player-wrap">
-            <iframe 
-              id="spotifyIframe" 
-              src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0" 
-              allowfullscreen="" 
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-              loading="lazy"
-              title="Pemutar Musik Spotify Fokus"
-            ></iframe>
+            <iframe id="spotifyIframe"
+              src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0"
+              allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy" title="Pemutar Musik Spotify Fokus"></iframe>
           </div>
 
           <!-- Player Options / Expand View -->
           <div class="spotify-footer-actions">
             <button type="button" class="btn-player-size" id="btnTogglePlayerSize">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="15 3 21 3 21 9" />
+                <polyline points="9 21 3 21 3 15" />
+                <line x1="21" y1="3" x2="14" y2="10" />
+                <line x1="3" y1="21" x2="10" y2="14" />
+              </svg>
               <span id="playerSizeLabel">Tampilkan Daftar Lagu</span>
             </button>
-            <a href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" class="btn-open-spotify-app" id="linkOpenSpotifyApp">
+            <a href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" class="btn-open-spotify-app"
+              id="linkOpenSpotifyApp">
               <span>Buka di Spotify</span>
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
             </a>
           </div>
         </div>
@@ -1986,7 +2531,9 @@
         <div class="card">
           <div class="card-title">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.2">
-              <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+              <line x1="18" y1="20" x2="18" y2="10" />
+              <line x1="12" y1="20" x2="12" y2="4" />
+              <line x1="6" y1="20" x2="6" y2="14" />
             </svg>
             Statistik Sesi Hari Ini
           </div>
@@ -2009,89 +2556,143 @@
 
 
       <!-- =========================================
-           TAB 3: JURNAL (DAILY REFLECTION & NOTES)
-           ========================================= */
-      ========================================= -->
+           TAB 3: JURNAL REFLEKSI (PENCATATAN RINGKAS PEMAHAMAN MATERI)
+           ========================================= -->
       <section id="tab-journal" class="tab-page">
-        <!-- Mood Selector -->
-        <div class="mood-tracker">
-          <div class="mood-title">Bagaimana energimu hari ini?</div>
-          <div class="mood-row">
-            <div class="mood-btn active" data-mood="Produktif" data-emoji="😄">
-              <span class="mood-emoji">😄</span>
-              <span class="mood-label">Produktif</span>
-            </div>
-            <div class="mood-btn" data-mood="Senang" data-emoji="😊">
-              <span class="mood-emoji">😊</span>
-              <span class="mood-label">Senang</span>
-            </div>
-            <div class="mood-btn" data-mood="Tenang" data-emoji="🌿">
-              <span class="mood-emoji">🌿</span>
-              <span class="mood-label">Tenang</span>
-            </div>
-            <div class="mood-btn" data-mood="Lelah" data-emoji="🥱">
-              <span class="mood-emoji">🥱</span>
-              <span class="mood-label">Lelah</span>
-            </div>
-            <div class="mood-btn" data-mood="Sibuk" data-emoji="🤯">
-              <span class="mood-emoji">🤯</span>
-              <span class="mood-label">Sibuk</span>
-            </div>
-          </div>
+
+        <!-- Header Card: Inspirasi Refleksi Belajar -->
+        <div class="quote-box" style="margin-bottom: 14px;">
+          <div class="quote-text" id="quoteText">"Belajar tanpa refleksi adalah sia-sia; refleksi tanpa belajar adalah
+            berbahaya."</div>
+          <span class="quote-author" id="quoteAuthor">— Konfusius</span>
         </div>
 
-        <!-- Inspirasi & Quote Box -->
-        <div class="quote-box">
-          <div class="quote-text" id="quoteText">"Fokus bukanlah mengatakan ya pada hal yang kamu sukai, tetapi mengatakan tidak pada ratusan ide baik lainnya."</div>
-          <span class="quote-author" id="quoteAuthor">— Steve Jobs</span>
-        </div>
-
-        <!-- Write New Note Card -->
-        <div class="card">
-          <div class="card-title" style="margin-bottom: 12px;">
+        <!-- Form Catatan Refleksi Card -->
+        <div class="card" style="margin-bottom: 16px;">
+          <div class="card-title" style="margin-bottom: 14px;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.3">
-              <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+              <path d="M12 20h9" />
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
             </svg>
-            Tulis Refleksi & Catatan
+            Form Catatan Refleksi
           </div>
-          <form class="journal-form" id="journalForm">
-            <input 
-              type="text" 
-              id="journalTitle" 
-              class="journal-input" 
-              placeholder="Judul catatan atau ide..." 
-              required
-            >
-            <div class="journal-category-select">
-              <span class="cat-pill active" data-cat="Refleksi">🌱 Refleksi</span>
-              <span class="cat-pill" data-cat="Ide Proyek">💡 Ide Proyek</span>
-              <span class="cat-pill" data-cat="Catatan Syukur">✨ Rasa Syukur</span>
-              <span class="cat-pill" data-cat="Evaluasi">🎯 Evaluasi</span>
+
+          <form class="reflection-form" id="reflectionForm">
+            <!-- 1. Input Tanggal Hari Ini Secara Otomatis -->
+            <div class="form-group">
+              <label class="form-label" for="reflectionDate">
+                <span>📅 Tanggal Refleksi</span>
+                <span class="form-label-desc">Otomatis hari ini</span>
+              </label>
+              <div class="date-input-row">
+                <input type="date" id="reflectionDate" class="journal-input" required>
+                <button type="button" class="btn-today-badge" id="btnSetTodayDate" title="Setel kembali ke hari ini">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  <span>Hari Ini</span>
+                </button>
+              </div>
             </div>
-            <textarea 
-              id="journalContent" 
-              class="journal-input journal-textarea" 
-              placeholder="Apa pencapaian terbesarmu hari ini? Hal apa yang bisa diperbaiki besok?" 
-              required
-            ></textarea>
-            <button type="submit" class="btn-save-journal">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
-                <polyline points="17 21 17 13 7 13 7 21"/>
-                <polyline points="7 3 7 8 15 8"/>
+
+            <!-- 2. Kolom Pilihan Mata Pelajaran yang Baru Dipelajari -->
+            <div class="form-group">
+              <label class="form-label" for="reflectionSubject">
+                <span>📚 Mata Pelajaran yang Baru Dipelajari</span>
+              </label>
+              <select id="reflectionSubject" class="journal-input journal-select" required>
+                <option value="" disabled selected>Pilih mata pelajaran yang dipelajari...</option>
+                <option value="Matematika">📐 Matematika</option>
+                <option value="Informatika & Pemrograman">💻 Informatika & Pemrograman</option>
+                <option value="Bahasa Inggris">🇬🇧 Bahasa Inggris</option>
+                <option value="Bahasa Indonesia">📚 Bahasa Indonesia</option>
+                <option value="Ilmu Pengetahuan Alam (IPA)">⚡ Ilmu Pengetahuan Alam (IPA)</option>
+                <option value="Fisika">⚛️ Fisika</option>
+                <option value="Kimia">🧪 Kimia</option>
+                <option value="Biologi">🧬 Biologi</option>
+                <option value="Ilmu Pengetahuan Sosial (IPS)">🌍 Ilmu Pengetahuan Sosial (IPS)</option>
+                <option value="Sejarah">🏛️ Sejarah</option>
+                <option value="Ekonomi & Bisnis">📊 Ekonomi & Bisnis</option>
+                <option value="Seni & Desain">🎨 Seni & Desain</option>
+                <option value="Pendidikan Agama">🕊️ Pendidikan Agama</option>
+                <option value="custom">✏️ Mata Pelajaran Lainnya (Tulis Manual)...</option>
+              </select>
+
+              <!-- Optional Custom Subject Input -->
+              <input type="text" id="reflectionCustomSubject" class="journal-input"
+                placeholder="Ketik nama mata pelajaran lainnya..." style="display: none; margin-top: 4px;">
+
+              <!-- Quick Thumb Selection Chips -->
+              <div class="quick-subject-chips" id="quickSubjectChips">
+                <span class="quick-sub-chip" data-subject="Matematika">📐 Matematika</span>
+                <span class="quick-sub-chip" data-subject="Informatika & Pemrograman">💻 Informatika</span>
+                <span class="quick-sub-chip" data-subject="Bahasa Inggris">🇬🇧 B. Inggris</span>
+                <span class="quick-sub-chip" data-subject="Ilmu Pengetahuan Alam (IPA)">⚡ IPA</span>
+                <span class="quick-sub-chip" data-subject="Bahasa Indonesia">📚 B. Indonesia</span>
+                <span class="quick-sub-chip" data-subject="Ekonomi & Bisnis">📊 Ekonomi</span>
+              </div>
+            </div>
+
+            <!-- Tingkat Pemahaman Materi (Pill Selector) -->
+            <div class="form-group">
+              <label class="form-label">
+                <span>🎯 Tingkat Pemahaman Materi</span>
+              </label>
+              <div class="understanding-level-selector">
+                <button type="button" class="understand-pill active" data-level="Paham Penuh"
+                  data-badge="⭐⭐⭐ Paham Penuh">
+                  ⭐⭐⭐ Paham Penuh
+                </button>
+                <button type="button" class="understand-pill" data-level="Cukup Paham" data-badge="⭐⭐ Cukup Paham">
+                  ⭐⭐ Cukup Paham
+                </button>
+                <button type="button" class="understand-pill warning" data-level="Perlu Diulang"
+                  data-badge="⭐ Perlu Diulang">
+                  ⭐ Perlu Diulang
+                </button>
+              </div>
+            </div>
+
+            <!-- 3. Kolom Teks Catatan Refleksi Pemahaman Materi -->
+            <div class="form-group">
+              <label class="form-label" for="reflectionNotes">
+                <span>💡 Catatan Refleksi Pemahaman Materi</span>
+              </label>
+              <textarea id="reflectionNotes" class="journal-input journal-textarea"
+                placeholder="Tuliskan poin-poin materi yang baru dipahami, rumus atau konsep kunci, kendala saat belajar, serta bagian yang perlu ditinjau kembali..."
+                required></textarea>
+            </div>
+
+            <!-- 4. Tombol Simpan Catatan Refleksi -->
+            <button type="submit" class="btn-save-reflection" id="btnSaveReflection">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+                <polyline points="17 21 17 13 7 13 7 21" />
+                <polyline points="7 3 7 8 15 8" />
               </svg>
-              <span>Simpan Catatan</span>
+              <span>Simpan Catatan Refleksi</span>
             </button>
           </form>
         </div>
 
-        <!-- Journal Entries List -->
-        <div class="card-title" style="margin: 18px 4px 10px;">
-          Riwayat Catatan Harian (<span id="journalCount">0</span>)
+        <!-- 5. Riwayat Catatan Refleksi -->
+        <div class="reflection-header-row"
+          style="display: flex; justify-content: space-between; align-items: center; margin: 18px 4px 10px;">
+          <div class="card-title" style="margin: 0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.3">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            Riwayat Catatan Refleksi (<span id="reflectionCount">0</span>)
+          </div>
         </div>
-        <div class="journal-feed" id="journalFeedContainer">
-          <!-- Rendered via JavaScript -->
+
+        <div class="reflection-feed" id="reflectionFeedContainer">
+          <!-- Rendered dynamically via JavaScript, terurut dari tanggal paling baru -->
         </div>
+
       </section>
 
     </main>
@@ -2108,9 +2709,10 @@
       <button class="nav-tab-btn active" data-tab="tab-tasks" id="navTabTasks" aria-label="Buka Tab Tugas">
         <div class="nav-icon-wrap">
           <!-- SVG Check-Square -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="9 11 12 14 22 4"/>
-            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="9 11 12 14 22 4" />
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
           </svg>
           <span class="nav-badge" id="navTaskBadge" style="display: none;">0</span>
         </div>
@@ -2121,28 +2723,32 @@
       <button class="nav-tab-btn" data-tab="tab-focus" id="navTabFocus" aria-label="Buka Tab Fokus">
         <div class="nav-icon-wrap">
           <!-- SVG Timer -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="10" x2="14" y1="2" y2="2"/>
-            <line x1="12" x2="15" y1="14" y2="11"/>
-            <circle cx="12" cy="14" r="8"/>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <line x1="10" x2="14" y1="2" y2="2" />
+            <line x1="12" x2="15" y1="14" y2="11" />
+            <circle cx="12" cy="14" r="8" />
           </svg>
           <span class="running-dot" id="timerRunningIndicator"></span>
         </div>
         <span class="nav-label">Fokus</span>
       </button>
 
-      <!-- Tab 3: Jurnal (Ikon Catatan Buku) -->
-      <button class="nav-tab-btn" data-tab="tab-journal" id="navTabJournal" aria-label="Buka Tab Jurnal">
+      <!-- Tab 3: Jurnal Refleksi (Ikon Catatan Buku) -->
+      <button class="nav-tab-btn" data-tab="tab-journal" id="navTabJournal" aria-label="Buka Tab Jurnal Refleksi">
         <div class="nav-icon-wrap">
           <!-- SVG Catatan Buku (Book) -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
-            <line x1="8" y1="6" x2="16" y2="6"/>
-            <line x1="8" y1="10" x2="14" y2="10"/>
-            <line x1="8" y1="14" x2="12" y2="14"/>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
+            <line x1="8" y1="6" x2="16" y2="6" />
+            <line x1="8" y1="10" x2="14" y2="10" />
+            <line x1="8" y1="14" x2="12" y2="14" />
           </svg>
         </div>
-        <span class="nav-label">Jurnal</span>
+        <span class="nav-label">Refleksi</span>
+      </button>
+    </nav>
     <!-- Modal Popup: Ajakan Refleksi Belajar -->
     <div class="modal-overlay" id="reflectionModalOverlay">
       <div class="modal-card">
@@ -2150,12 +2756,15 @@
         <div class="modal-title">Sesi Fokus Belajar Selesai!</div>
         <div class="modal-subtitle">25 Menit Fokus Penuh Tercapai! 🌟</div>
         <div class="modal-desc">
-          Kerja keras yang luar biasa! Istirahatkan pikiranmu sejenak dan luangkan waktu untuk mencatat materi atau evaluasi belajarmu di <b>Jurnal Refleksi</b>.
+          Kerja keras yang luar biasa! Istirahatkan pikiranmu sejenak dan luangkan waktu untuk mencatat materi atau
+          evaluasi belajarmu di <b>Jurnal Refleksi</b>.
         </div>
         <div class="modal-actions">
           <button class="modal-btn-primary" id="btnGoToJournal">
             <span>Catat di Jurnal Sekarang</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
           </button>
           <button class="modal-btn-secondary" id="btnDismissReflectionModal">
             Mulai Istirahat Santai 5m ☕
@@ -2177,6 +2786,18 @@
        ========================================= -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Helper format tanggal hari ini YYYY-MM-DD
+      function getTodayDateString() {
+        const now = new Date();
+        const y = now.getFullYear();
+        const m = String(now.getMonth() + 1).padStart(2, '0');
+        const d = String(now.getDate()).padStart(2, '0');
+        return `${y}-${m}-${d}`;
+      }
+
+      let reflectionDateInput = null;
+      let reflectionNotesInput = null;
+
       // --- AUDIO SYNTHESIS & SOUND EFFECTS (Web Audio API) ---
       let audioCtx = null;
       let rainNoiseNode = null;
@@ -2720,8 +3341,8 @@
         pauseTimer();
         currentMode = mode;
 
-        const targetMinutes = minutes !== undefined 
-          ? minutes 
+        const targetMinutes = minutes !== undefined
+          ? minutes
           : (mode === 'pomodoro' ? customFocusMins : customBreakMins);
 
         timerMinutes = targetMinutes;
@@ -2838,11 +3459,16 @@
       btnGoToJournal.addEventListener('click', () => {
         closeReflectionModal();
         switchTab('tab-journal');
-        // Auto pre-fill title for quick convenience
-        const journalTitleInput = document.getElementById('journalTitle');
-        if (journalTitleInput) {
-          journalTitleInput.value = 'Evaluasi Sesi Fokus Belajar (25 Menit)';
-          journalTitleInput.focus();
+        // Auto set tanggal hari ini dan fokus ke catatan refleksi
+        if (reflectionDateInput) {
+          reflectionDateInput.value = getTodayDateString();
+        }
+        const activeTask = timerTaskSelector ? timerTaskSelector.value : '';
+        if (reflectionNotesInput) {
+          if (activeTask) {
+            reflectionNotesInput.value = `Selesai sesi fokus belajar terkait: "${activeTask}".\nRingkasan materi & pemahaman: `;
+          }
+          reflectionNotesInput.focus();
         }
         showToast('Yuk catat refleksi belajarmu hari ini 📔');
       });
@@ -3065,160 +3691,370 @@
       });
 
       // =========================================
-      // TAB 3: JURNAL (DAILY REFLECTION & NOTES)
+      // TAB 3: JURNAL REFLEKSI (PENCATATAN RINGKAS PEMAHAMAN MATERI)
       // =========================================
       const sampleQuotes = [
-        { text: "Fokus bukanlah mengatakan ya pada hal yang kamu sukai, tetapi mengatakan tidak pada ratusan ide baik lainnya.", author: "Steve Jobs" },
-        { text: "Disiplin adalah jembatan antara tujuan dan pencapaian.", author: "Jim Rohn" },
+        { text: "Belajar tanpa refleksi adalah sia-sia; refleksi tanpa belajar adalah berbahaya.", author: "Konfusius" },
         { text: "Kemajuan kecil setiap hari akan menghasilkan hasil yang luar biasa seiring waktu.", author: "James Clear" },
-        { text: "Jangan menunggu waktu yang sempurna. Ambil saat ini dan buatlah menjadi sempurna.", author: "Anonim" }
+        { text: "Fokus bukanlah mengatakan ya pada hal yang kamu sukai, tetapi mengatakan tidak pada ratusan ide baik lainnya.", author: "Steve Jobs" },
+        { text: "Disiplin adalah jembatan antara tujuan dan pencapaian.", author: "Jim Rohn" }
       ];
 
       let quoteIndex = 0;
       function setRandomQuote() {
         const q = sampleQuotes[quoteIndex % sampleQuotes.length];
-        document.getElementById('quoteText').textContent = `"${q.text}"`;
-        document.getElementById('quoteAuthor').textContent = `— ${q.author}`;
+        const quoteTextEl = document.getElementById('quoteText');
+        const quoteAuthorEl = document.getElementById('quoteAuthor');
+        if (quoteTextEl) quoteTextEl.textContent = `"${q.text}"`;
+        if (quoteAuthorEl) quoteAuthorEl.textContent = `— ${q.author}`;
         quoteIndex++;
       }
-      document.querySelector('.quote-box').addEventListener('click', setRandomQuote);
+      const quoteBoxEl = document.querySelector('.quote-box');
+      if (quoteBoxEl) {
+        quoteBoxEl.addEventListener('click', setRandomQuote);
+      }
 
-      // Mood Selection
-      const moodButtons = document.querySelectorAll('.mood-btn');
-      let currentMood = 'Produktif';
-      let currentEmoji = '😄';
-
-      moodButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          moodButtons.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          currentMood = btn.getAttribute('data-mood');
-          currentEmoji = btn.getAttribute('data-emoji');
-          showToast(`Mood hari ini dicatat: ${currentEmoji} ${currentMood}`);
-        });
-      });
-
-      // Journal Category Pills
-      const catPills = document.querySelectorAll('.cat-pill');
-      let selectedJournalCategory = 'Refleksi';
-      catPills.forEach(pill => {
-        pill.addEventListener('click', () => {
-          catPills.forEach(p => p.classList.remove('active'));
-          pill.classList.add('active');
-          selectedJournalCategory = pill.getAttribute('data-cat');
-        });
-      });
-
-      const initialJournalEntries = [
+      // Initial Data Refleksi Realistis untuk Pelajar
+      const initialReflections = [
         {
           id: 1,
-          title: "Refleksi Pagi: Membangun Aplikasi Produktivitas",
-          category: "Refleksi",
-          mood: "Produktif",
-          emoji: "😄",
-          content: "Hari ini berhasil merancang aplikasi Productivity Hub dengan antarmuka mobile modern yang intuitif. Fokus utama tetap pada kesederhanaan dan kemudahan akses dengan jempol.",
-          dateStr: "Hari ini, 09:15"
+          date: getTodayDateString(),
+          time: "20:30",
+          timestamp: Date.now() - 3600000,
+          subject: "Informatika & Pemrograman",
+          level: "Paham Penuh",
+          notes: "Berhasil memahami arsitektur aplikasi mobile berbasis web dan penyimpanan persisten di LocalStorage. Struktur kode sekarang jauh lebih rapi dan modular."
         },
         {
           id: 2,
-          title: "Ide Fitur Pomodoro & Ambient Sound",
-          category: "Ide Proyek",
-          mood: "Senang",
-          emoji: "💡",
-          content: "Menambahkan efek suara hujan lembut sangat membantu menjaga konsentrasi saat mengerjakan tugas-tugas berat.",
-          dateStr: "Kemarin, 16:30"
+          date: new Date(Date.now() - 86400000).toISOString().split('T')[0],
+          time: "15:45",
+          timestamp: Date.now() - 86400000,
+          subject: "Matematika",
+          level: "Cukup Paham",
+          notes: "Mempelajari turunan fungsi aljabar dan rumus rantai. Konsep dasar sudah dipahami, namun masih perlu mengerjakan 5 latihan soal tambahan untuk mempercepat hitungan kalkulus."
         }
       ];
 
-      let journalEntries = JSON.parse(localStorage.getItem('productivity_hub_journal')) || initialJournalEntries;
-
-      const journalFeedContainer = document.getElementById('journalFeedContainer');
-      const journalForm = document.getElementById('journalForm');
-      const journalTitle = document.getElementById('journalTitle');
-      const journalContent = document.getElementById('journalContent');
-      const journalCount = document.getElementById('journalCount');
-
-      function saveJournal() {
-        localStorage.setItem('productivity_hub_journal', JSON.stringify(journalEntries));
-        renderJournal();
+      // Penyimpanan Persisten di LocalStorage berdampingan dengan data tugas
+      let reflections = JSON.parse(localStorage.getItem('productivity_hub_reflections'));
+      if (!reflections || !Array.isArray(reflections)) {
+        // Cek migrasi dari journal lama jika ada
+        const oldJournal = JSON.parse(localStorage.getItem('productivity_hub_journal'));
+        if (oldJournal && Array.isArray(oldJournal) && oldJournal.length > 0) {
+          reflections = oldJournal.map((item, idx) => ({
+            id: item.id || (Date.now() - idx * 10000),
+            date: getTodayDateString(),
+            time: "10:00",
+            timestamp: Date.now() - idx * 10000,
+            subject: item.category || "Refleksi Umum",
+            level: "Paham Penuh",
+            notes: (item.title ? item.title + "\n\n" : "") + (item.content || "")
+          }));
+        } else {
+          reflections = initialReflections;
+        }
+        localStorage.setItem('productivity_hub_reflections', JSON.stringify(reflections));
       }
 
-      function renderJournal() {
-        journalFeedContainer.innerHTML = '';
-        journalCount.textContent = journalEntries.length;
+      // DOM Elements Form & Riwayat Refleksi
+      const reflectionForm = document.getElementById('reflectionForm');
+      reflectionDateInput = document.getElementById('reflectionDate');
+      reflectionNotesInput = document.getElementById('reflectionNotes');
+      const btnSetTodayDate = document.getElementById('btnSetTodayDate');
+      const reflectionSubjectSelect = document.getElementById('reflectionSubject');
+      const reflectionCustomSubject = document.getElementById('reflectionCustomSubject');
+      const quickSubjectChips = document.querySelectorAll('.quick-sub-chip');
+      const understandPills = document.querySelectorAll('.understand-pill');
+      const reflectionFeedContainer = document.getElementById('reflectionFeedContainer');
+      const reflectionCount = document.getElementById('reflectionCount');
 
-        if (journalEntries.length === 0) {
-          journalFeedContainer.innerHTML = `
+      let selectedUnderstanding = 'Paham Penuh';
+
+      // 1. Inisialisasi Tanggal Otomatis Hari Ini
+      if (reflectionDateInput) {
+        reflectionDateInput.value = getTodayDateString();
+      }
+
+      if (btnSetTodayDate) {
+        btnSetTodayDate.addEventListener('click', () => {
+          if (reflectionDateInput) {
+            reflectionDateInput.value = getTodayDateString();
+          }
+          playChime('pop');
+          showToast('Tanggal disetel ke hari ini 📅');
+        });
+      }
+
+      // 2. Handler Pilihan Mata Pelajaran
+      if (reflectionSubjectSelect) {
+        reflectionSubjectSelect.addEventListener('change', (e) => {
+          const val = e.target.value;
+          if (val === 'custom') {
+            reflectionCustomSubject.style.display = 'block';
+            reflectionCustomSubject.focus();
+          } else {
+            reflectionCustomSubject.style.display = 'none';
+            reflectionCustomSubject.value = '';
+          }
+
+          // Sinkronisasi status aktif quick chips
+          quickSubjectChips.forEach(chip => {
+            if (chip.getAttribute('data-subject') === val) {
+              chip.classList.add('active');
+            } else {
+              chip.classList.remove('active');
+            }
+          });
+        });
+      }
+
+      // Quick thumb chips selection
+      quickSubjectChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          const sub = chip.getAttribute('data-subject');
+          quickSubjectChips.forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+
+          if (reflectionSubjectSelect) {
+            reflectionSubjectSelect.value = sub;
+            reflectionCustomSubject.style.display = 'none';
+            reflectionCustomSubject.value = '';
+          }
+          playChime('pop');
+        });
+      });
+
+      // 3. Handler Tingkat Pemahaman Materi
+      understandPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          understandPills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          selectedUnderstanding = pill.getAttribute('data-level');
+          playChime('pop');
+        });
+      });
+
+      // Simpan Refleksi ke LocalStorage
+      function saveReflections() {
+        localStorage.setItem('productivity_hub_reflections', JSON.stringify(reflections));
+        renderReflections();
+      }
+
+      // Helper Ikon Mata Pelajaran
+      function getSubjectIcon(subjectName) {
+        if (!subjectName) return '📖';
+        const s = subjectName.toLowerCase();
+        if (s.includes('matematika')) return '📐';
+        if (s.includes('informatika') || s.includes('pemrograman') || s.includes('coding')) return '💻';
+        if (s.includes('inggris')) return '🇬🇧';
+        if (s.includes('indonesia')) return '📚';
+        if (s.includes('fisika')) return '⚛️';
+        if (s.includes('kimia')) return '🧪';
+        if (s.includes('biologi')) return '🧬';
+        if (s.includes('ipa') || s.includes('alam')) return '⚡';
+        if (s.includes('ips') || s.includes('sosial')) return '🌍';
+        if (s.includes('sejarah')) return '🏛️';
+        if (s.includes('ekonomi') || s.includes('bisnis') || s.includes('akuntansi')) return '📊';
+        if (s.includes('seni') || s.includes('desain')) return '🎨';
+        if (s.includes('agama')) return '🕊️';
+        return '📖';
+      }
+
+      // Format Tampilan Tanggal Bahasa Indonesia
+      function formatIndonesianDate(dateStr, timeStr) {
+        if (!dateStr) return timeStr || 'Hari ini';
+        try {
+          const parts = dateStr.split('-');
+          if (parts.length === 3) {
+            const year = parseInt(parts[0], 10);
+            const monthIdx = parseInt(parts[1], 10) - 1;
+            const day = parseInt(parts[2], 10);
+            const entryDate = new Date(year, monthIdx, day);
+
+            const today = new Date();
+            const isToday = today.getFullYear() === year && today.getMonth() === monthIdx && today.getDate() === day;
+
+            const yesterday = new Date();
+            yesterday.setDate(today.getDate() - 1);
+            const isYesterday = yesterday.getFullYear() === year && yesterday.getMonth() === monthIdx && yesterday.getDate() === day;
+
+            if (isToday) {
+              return `Hari ini${timeStr ? ', ' + timeStr : ''}`;
+            } else if (isYesterday) {
+              return `Kemarin${timeStr ? ', ' + timeStr : ''}`;
+            } else {
+              const days = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
+              const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+              const dayName = days[entryDate.getDay()];
+              const monthName = months[monthIdx];
+              return `${dayName}, ${day} ${monthName} ${year}${timeStr ? ' • ' + timeStr : ''}`;
+            }
+          }
+        } catch (e) {
+          console.warn('Error formatting date', e);
+        }
+        return dateStr + (timeStr ? ` (${timeStr})` : '');
+      }
+
+      // 4. Render Riwayat Catatan Refleksi Terurut Tanggal Paling Baru
+      function renderReflections() {
+        if (!reflectionFeedContainer) return;
+        reflectionFeedContainer.innerHTML = '';
+
+        if (reflectionCount) {
+          reflectionCount.textContent = reflections.length;
+        }
+
+        if (reflections.length === 0) {
+          reflectionFeedContainer.innerHTML = `
             <div class="empty-state">
-              <div class="empty-state-icon">📖</div>
-              <div class="empty-state-text">Belum ada catatan jurnal</div>
-              <div class="empty-state-sub">Tuliskan ide atau evaluasi harimu di formulir atas!</div>
+              <div class="empty-state-icon">📔</div>
+              <div class="empty-state-text">Belum ada riwayat catatan refleksi</div>
+              <div class="empty-state-sub">Tuliskan pemahaman materi belajarmu pada formulir di atas!</div>
             </div>
           `;
           return;
         }
 
-        journalEntries.forEach(entry => {
+        // Urutkan dari tanggal paling baru (newest date first)
+        const sortedReflections = [...reflections].sort((a, b) => {
+          const timeA = a.timestamp || (a.date ? new Date(`${a.date}T${a.time || '00:00'}`).getTime() : 0);
+          const timeB = b.timestamp || (b.date ? new Date(`${b.date}T${b.time || '00:00'}`).getTime() : 0);
+          return timeB - timeA;
+        });
+
+        sortedReflections.forEach(item => {
           const card = document.createElement('div');
-          card.className = 'journal-entry-card';
+          card.className = 'reflection-card';
+
+          const icon = getSubjectIcon(item.subject);
+          const formattedDate = formatIndonesianDate(item.date, item.time);
+          const isWarning = item.level === 'Perlu Diulang';
+
           card.innerHTML = `
-            <div class="entry-header">
-              <div class="entry-title">${escapeHtml(entry.title)}</div>
-              <button class="btn-icon btn-delete-journal" title="Hapus catatan">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+            <div class="reflection-card-header">
+              <div class="reflection-meta-tags">
+                <span class="subject-badge">
+                  <span>${icon}</span>
+                  <span>${escapeHtml(item.subject)}</span>
+                </span>
+                <span class="level-badge ${isWarning ? 'warning' : ''}">
+                  ${escapeHtml(item.level || 'Paham')}
+                </span>
+              </div>
+              <button class="btn-delete-reflection" data-id="${item.id}" title="Hapus catatan refleksi ini" aria-label="Hapus catatan">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
                 </svg>
               </button>
             </div>
-            <div class="entry-meta">
-              <span class="entry-badge">${escapeHtml(entry.category)}</span>
-              <span>•</span>
-              <span>${entry.emoji || '🌱'} ${escapeHtml(entry.mood || 'Biasa')}</span>
+            <div class="date-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              <span>${escapeHtml(formattedDate)}</span>
             </div>
-            <div class="entry-body">${escapeHtml(entry.content)}</div>
-            <div class="entry-footer">
-              <span>${escapeHtml(entry.dateStr)}</span>
-              <span style="color: var(--accent); font-weight: 600;">Productivity Hub</span>
+            <div class="reflection-content-box">${escapeHtml(item.notes)}</div>
+            <div class="reflection-card-footer">
+              <span style="font-size: 10.5px; color: var(--text-light);">Productivity Hub • Refleksi Belajar</span>
+              <span style="font-size: 10.5px; font-weight: 600; color: var(--accent);">Tersimpan Persisten ✓</span>
             </div>
           `;
 
-          card.querySelector('.btn-delete-journal').addEventListener('click', () => {
-            journalEntries = journalEntries.filter(e => e.id !== entry.id);
-            saveJournal();
-            showToast('Catatan jurnal dihapus');
+          // Tombol Hapus pada masing-masing kartu
+          const deleteBtn = card.querySelector('.btn-delete-reflection');
+          deleteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            reflections = reflections.filter(r => r.id !== item.id);
+            saveReflections();
+            playChime('pop');
+            showToast('Catatan refleksi berhasil dihapus 🗑️');
           });
 
-          journalFeedContainer.appendChild(card);
+          reflectionFeedContainer.appendChild(card);
         });
       }
 
-      journalForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const title = journalTitle.value.trim();
-        const content = journalContent.value.trim();
-        if (!title || !content) return;
+      // 5. Submit Form Catatan Refleksi
+      if (reflectionForm) {
+        reflectionForm.addEventListener('submit', (e) => {
+          e.preventDefault();
 
-        const now = new Date();
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
-        const dateStr = `Hari ini, ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+          const dateVal = reflectionDateInput && reflectionDateInput.value ? reflectionDateInput.value : getTodayDateString();
 
-        const newEntry = {
-          id: Date.now(),
-          title: title,
-          category: selectedJournalCategory,
-          mood: currentMood,
-          emoji: currentEmoji,
-          content: content,
-          dateStr: dateStr
-        };
+          let subjectVal = reflectionSubjectSelect ? reflectionSubjectSelect.value : '';
+          if (subjectVal === 'custom') {
+            subjectVal = reflectionCustomSubject.value.trim();
+          }
 
-        journalEntries.unshift(newEntry);
-        saveJournal();
+          const notesVal = reflectionNotesInput ? reflectionNotesInput.value.trim() : '';
 
-        journalTitle.value = '';
-        journalContent.value = '';
-        showToast('Catatan jurnal berhasil disimpan! 📔');
-      });
+          if (!subjectVal) {
+            if (reflectionSubjectSelect && reflectionSubjectSelect.value === 'custom') {
+              reflectionCustomSubject.focus();
+            } else if (reflectionSubjectSelect) {
+              reflectionSubjectSelect.focus();
+            }
+            showToast('Silakan pilih atau isi mata pelajaran terlebih dahulu ⚠️');
+            return;
+          }
+
+          if (!notesVal) {
+            if (reflectionNotesInput) reflectionNotesInput.focus();
+            showToast('Silakan tuliskan catatan refleksi pemahaman materi ⚠️');
+            return;
+          }
+
+          const now = new Date();
+          const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+          const entryTimestamp = new Date(`${dateVal}T${timeStr}`).getTime() || Date.now();
+
+          const newReflection = {
+            id: Date.now(),
+            date: dateVal,
+            time: timeStr,
+            timestamp: entryTimestamp,
+            subject: subjectVal,
+            level: selectedUnderstanding,
+            notes: notesVal
+          };
+
+          // Masukkan catatan baru ke daftar riwayat (terbaru paling atas)
+          reflections.unshift(newReflection);
+          saveReflections();
+
+          // Reset formulir dengan tanggal tetap hari ini
+          if (reflectionNotesInput) reflectionNotesInput.value = '';
+          if (reflectionSubjectSelect) {
+            reflectionSubjectSelect.selectedIndex = 0;
+          }
+          if (reflectionCustomSubject) {
+            reflectionCustomSubject.value = '';
+            reflectionCustomSubject.style.display = 'none';
+          }
+          quickSubjectChips.forEach(c => c.classList.remove('active'));
+          if (reflectionDateInput) {
+            reflectionDateInput.value = getTodayDateString();
+          }
+
+          // Reset understanding pills ke Paham Penuh
+          selectedUnderstanding = 'Paham Penuh';
+          understandPills.forEach(p => {
+            if (p.getAttribute('data-level') === 'Paham Penuh') {
+              p.classList.add('active');
+            } else {
+              p.classList.remove('active');
+            }
+          });
+
+          playChime('timerDone');
+          showToast('Catatan refleksi berhasil disimpan! 📔');
+        });
+      }
 
       // --- HELPER FUNCTION: HTML ESCAPING ---
       function escapeHtml(text) {
@@ -3238,7 +4074,7 @@
       updateDurationAdjusterUI();
       updateTimerDisplay();
       updateFocusStats();
-      renderJournal();
+      renderReflections();
       renderSpotifyChips();
       const currentActive = spotifyPlaylists.find(p => p.id === activeSpotifyId) || spotifyPlaylists[0];
       if (currentActive) {
@@ -3247,4 +4083,5 @@
     });
   </script>
 </body>
+
 </html>
